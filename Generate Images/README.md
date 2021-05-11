@@ -6,6 +6,13 @@ The script will genenrate an image in your current directory
 
 I've included a sample wav file
 
+
+## Dependencies
+
+wave - Read and write WAV files
+
+`pip install wave`
+
 ## Sound-waves
 Run: 
 
