@@ -42,14 +42,14 @@ def visualize(path: str):
     # actual ploting
     plt.plot(time, signal)
       
+    # you can also save
+    # the plot using
+    plt.savefig('wave_img.png', dpi=100)
+
     # shows the plot 
     # in new window
     plt.show()
   
-    # you can also save
-    # the plot using
-    plt.savefig('wave_img.png')
-
 
 if __name__ == "__main__":
     path = sys.argv[1]
