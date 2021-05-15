@@ -5,7 +5,7 @@ import numpy as np
 import wave, sys
 
 
-def visualize(path: str):
+def visualize_wave(path: str):
     # reading the audio file
     raw = wave.open(path)
       
@@ -44,13 +44,13 @@ def visualize(path: str):
       
     # you can also save
     # the plot using
-    plt.savefig('wave_img.png', dpi=100)
+    plt.savefig('../Images/wave_img.png', dpi=100)
 
     # shows the plot 
     # in new window
-    plt.show()
+    # plt.show()
   
 
 if __name__ == "__main__":
     path = sys.argv[1]
-    visualize(path)
+    visualize_wave(path)

@@ -9,9 +9,7 @@ import librosa.display
 #to play audio
 import IPython.display as ipd
 
-def visualize(path: str):
-
-
+def visualize_spec(path: str):
     # audio_fpath = "./"
     # audio_clips = os.listdir(audio_fpath)
     # print("No. of .wav files in audio folder = ", len(audio_clips))
@@ -42,11 +40,13 @@ def visualize(path: str):
     librosa.display.specshow(Xdb, sr=sr, x_axis='time', y_axis='log')
     plt.colorbar()
 
-    plt.savefig('spec_time_log.png')
 
-    plt.show()
+    plt.savefig('../Images/spec.png', dpi=100)
+
+
+    # plt.show()
 
 
 if __name__ == "__main__":
     path = sys.argv[1]
-    visualize(path)
+    visualize_spec(path)
