@@ -1,0 +1,5 @@
+# Jupyter Notebook leftovers
+.ipynb_checkpoints/
+
+# Mac OS
+.DS_Store
