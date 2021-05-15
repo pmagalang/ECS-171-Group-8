@@ -6,7 +6,7 @@ The following table will be used to organize and track performance of each image
 |----|----|----|----|----|----|
 |Mel-Spectrogram|  |  | .1 |  | true |
 |Log-Spectrogram|  |  | 0 |  | ? |
-|Spectrogram|  |  |  | 0 | ? |
+|Spectrogram|  |  | 0 |  | ? |
 |Tonnetz|  |  | 0 |  | ? |
 |Chroma|  |  | 0 |  | ? |
 |Q Transform|  |  | 0 |  | ? |
