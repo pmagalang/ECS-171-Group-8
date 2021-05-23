@@ -6,3 +6,10 @@
 
 # Data folder
 mel-grams/
+
+# Python executable remnants
+__pycache__/
+
+# Data folders
+chroma/
+tonnetz/
