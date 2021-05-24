@@ -54,6 +54,7 @@ if uploaded_file is not None:
         image = Image.open(img_path + 'spec.png')
 
     st.image(image, use_column_width=True)
+    st.write("The genere of this song is ____!")
             
 else:
     st.write('Awaiting Wave file to be uploaded...') 
