@@ -1,5 +1,6 @@
 from pydub import AudioSegment
 import math
+import random
 
 # class SplitWavAudioMubin():
 #     def __init__(self, filename):
@@ -12,12 +13,11 @@ import math
 
 def wav_split(filename):
     audio = AudioSegment.from_wav(filename)
+    total_ms = len(audio)
     total_mins = math.ceil(audio.duration_seconds / 60)
-    start = total_mins/3
-    end = start + 0.5
-    t1 = start * 60 * 1000
-    t2 = end * 60 * 1000
-    split_audio = audio[t1:t2]
+    start = random.randint(5000, total_ms - 35000) # first 5 seconds to last 5 seconds
+    end = start + 30000 # take 30 seconds
+    split_audio = audio[start:end]
     split_audio.export('../Audio/splitted.wav', format="wav")
     #return split_audio
 
