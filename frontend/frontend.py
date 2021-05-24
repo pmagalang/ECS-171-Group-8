@@ -10,6 +10,7 @@ from PIL import Image
 sys.path.insert(1, '../Generate Images')
 import wave_generator 
 import spec_generator
+import mel_spectrogram_generator1
 
 # imgs path
 img_path = os.path.dirname(__file__) + '/../Images/'
@@ -26,7 +27,7 @@ col1.header('User Input Features')
 # Collects user input 
 uploaded_file = col1.file_uploader("Upload your wave file", type=["wav"])
 
-choice = col1.selectbox('Chart',('Wave', 'Spectrogram'))
+choice = col1.selectbox('Chart',('Wave', 'Spectrogram', 'Mel Spectrogram'))
 
 # if uploaded_file is not None:
     # if user uploads a file
@@ -52,6 +53,11 @@ if uploaded_file is not None:
         st.subheader('Spectrogram Chart')
         spec_generator.visualize_spec(uploaded_file)
         image = Image.open(img_path + 'spec.png')
+        
+    elif choice == 'Mel Spectrogram':
+        st.subheader('Mel Spectrogram Chart')
+        mel_spectrogram_generator1.mel_spectrogram(uploaded_file)
+        image = Image.open(img_path + 'melspec.png')
 
     st.image(image, use_column_width=True)
     st.write("The genere of this song is ____!")
