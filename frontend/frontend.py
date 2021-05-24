@@ -10,10 +10,8 @@ from PIL import Image
 # Paths
 sys.path.insert(1, '../Generate Images')
 #sys.path.insert(1, '../frontend')
-import wave_generator 
-import spec_generator
-import mel_spectrogram_generator1
 import wav_splitter
+import generate_spectrograms
 
 # imgs & audio path
 img_path = os.path.dirname(__file__) + '/../Images/'
@@ -33,7 +31,7 @@ col1.header('User Input Features')
 # Collects user input 
 uploaded_file = col1.file_uploader("Upload your wave file", type=["wav"])
 
-choice = col1.selectbox('Chart',('Wave', 'Spectrogram', 'Mel Spectrogram'))
+choice = col1.selectbox('Chart',('Mel Spectrogram', 'Chroma', 'Tonnetz'))
 
 # if uploaded_file is not None:
     # if user uploads a file
@@ -59,19 +57,19 @@ if uploaded_file is not None:
         #file is shorter than 30secs
         splitted = uploaded_file
 
-    if choice == 'Wave':
-        st.subheader('Wave Chart')
-        wave_generator.visualize_wave(splitted)
-        image = Image.open(img_path + 'wave_img.png')
+    if choice == 'Chroma':
+        st.subheader('Chroma Chart')
+        generate_spectrograms.gen_Chroma(splitted)
+        image = Image.open(img_path + 'chroma.png')
 
-    elif choice == 'Spectrogram':
-        st.subheader('Spectrogram Chart')
-        spec_generator.visualize_spec(splitted)
-        image = Image.open(img_path + 'spec.png')
+    elif choice == 'Tonnetz':
+        st.subheader('Tonnetz Chart')
+        generate_spectrograms.gen_Tonnetz(splitted)
+        image = Image.open(img_path + 'tonnetz.png')
         
     elif choice == 'Mel Spectrogram':
         st.subheader('Mel Spectrogram Chart')
-        mel_spectrogram_generator1.mel_spectrogram(splitted)
+        generate_spectrograms.gen_melspectrogram(splitted)
         image = Image.open(img_path + 'melspec.png')
 
     st.image(image, use_column_width=True)
