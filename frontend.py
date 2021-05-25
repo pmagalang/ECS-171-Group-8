@@ -74,11 +74,11 @@ if uploaded_file is not None:
         st.subheader('Mel Spectrogram Chart')
         generate_spectrograms.gen_melspectrogram(splitted)
         image = Image.open(img_path + 'melspec.png')
-    
-    # display spectrogram
+
+    # show spectrogram to user
     st.image(image, use_column_width=True)
 
-    # display audio clip
+    # show audio clip
     st.write("The audio segment we used to analyze")
     st.audio(splitted, format = 'audio/wav')
 
