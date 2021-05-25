@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import altair as alt
 import sys
 import os.path
 from pydub import AudioSegment
@@ -9,8 +10,10 @@ from PIL import Image
 
 # Paths
 sys.path.insert(1, './preprocessing')
+sys.path.insert(1, './model')
 import wav_splitter
 import generate_spectrograms
+import song_predict
 
 # imgs & audio path
 img_path = os.path.dirname(__file__) + '/output/images/'
@@ -71,11 +74,25 @@ if uploaded_file is not None:
         st.subheader('Mel Spectrogram Chart')
         generate_spectrograms.gen_melspectrogram(splitted)
         image = Image.open(img_path + 'melspec.png')
-
+    
+    # display spectrogram
     st.image(image, use_column_width=True)
+
+    # display audio clip
     st.write("The audio segment we used to analyze")
     st.audio(splitted, format = 'audio/wav')
-    st.write("The genre of this song is ____!")
-            
+
+    # determine song genre
+    genre_probabilities = song_predict.predict_song_genre(img_path + 'melspec.png')
+
+    best_genre = max(genre_probabilities, key = genre_probabilities.get)
+    st.write("The genre of this song is ...")
+    st.write(best_genre)
+
+    # show probabilities
+    probs_df = pd.DataFrame(genre_probabilities.items(), columns = ['genre', 'probability'])
+    c = alt.Chart(probs_df).mark_bar().encode(x = 'genre', y = 'probability')
+    st.altair_chart(c, use_container_width=True)
+
 else:
     st.write('Awaiting Wave file to be uploaded...') 
