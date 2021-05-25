@@ -2,7 +2,6 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import model_from_json
 import numpy as np
-import cv2
 
 def predict_song_genre(melspec_path, model_json="model/model.json",model_weights="model/model_final_weights.h5" ):
     # load json and create model

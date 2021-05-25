@@ -35,24 +35,10 @@ uploaded_file = col1.file_uploader("Upload your wave file", type=["wav"])
 
 choice = col1.selectbox('Chart',('Mel Spectrogram', 'Chroma', 'Tonnetz'))
 
-# if uploaded_file is not None:
-    # if user uploads a file
-    # pass
-# else:
-#     # if user doesn't upload a file 
-#     def get_chart_type():
-#         choice = col1.selectbox('Chart',('Wave', 'Spectrogram'))
-#         return choice
-#     user_selects = get_chart_type()
-
-
-# Displays the user input features
-
-
 if uploaded_file is not None:
     audio = AudioSegment.from_wav(uploaded_file)
 
-    if audio.duration_seconds > 30:
+    if audio.duration_seconds > 31:
         #slice song to 30sec
         wav_splitter.wav_split(uploaded_file)
         splitted = audio_path + 'splitted.wav'
@@ -86,8 +72,7 @@ if uploaded_file is not None:
     genre_probabilities = song_predict.predict_song_genre(img_path + 'melspec.png')
 
     best_genre = max(genre_probabilities, key = genre_probabilities.get)
-    st.write("The genre of this song is ...")
-    st.write(best_genre)
+    st.write("The genre of this song is ...", best_genre, "!")
 
     # show probabilities
     probs_df = pd.DataFrame(genre_probabilities.items(), columns = ['genre', 'probability'])
