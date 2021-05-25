@@ -8,7 +8,7 @@ from PIL import Image
 
 
 # Paths
-sys.path.insert(1, './preprocessing')
+sys.path.insert(1, '/preprocessing')
 import wav_splitter
 import generate_spectrograms
 
