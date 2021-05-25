@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import altair as alt
 import sys
 import os.path
 from pydub import AudioSegment
@@ -86,6 +87,11 @@ if uploaded_file is not None:
     best_genre = max(genre_probabilities, key = genre_probabilities.get)
     st.write("The genre of this song is ...")
     st.write(best_genre)
+
+    # show probabilities
+    probs_df = pd.DataFrame(genre_probabilities.items(), columns = ['genre', 'probability'])
+    c = alt.Chart(probs_df).mark_bar().encode(x = 'genre', y = 'probability')
+    st.altair_chart(c, use_container_width=True)
             
 else:
     st.write('Awaiting Wave file to be uploaded...') 
