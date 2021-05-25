@@ -4,7 +4,3 @@ numpy
 altair
 pydub
 pillow
-librosa
-librosa
-matplotlib
-tensorflow
