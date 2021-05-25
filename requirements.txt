@@ -4,3 +4,6 @@ numpy
 altair
 pydub
 pillow
+librosa
+matplotlib
+tensorflow==2.0.0
