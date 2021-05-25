@@ -18,7 +18,7 @@ def wav_split(filename):
     start = random.randint(5000, total_ms - 35000) # first 5 seconds to last 5 seconds
     end = start + 30000 # take 30 seconds
     split_audio = audio[start:end]
-    split_audio.export('../output/audio/splitted.wav', format="wav")
+    split_audio.export('output/audio/splitted.wav', format="wav")
     #return split_audio
 
     # def single_split(self, from_min=1, to_min=1.5, split_filename):
