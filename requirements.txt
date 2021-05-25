@@ -2,14 +2,11 @@ streamlit
 pandas
 numpy
 altair
-sys
-os.path
 pydub
 PIL
 random
 librosa
 librosa.display
 matplotlib.pyplot
-tensorflow
 tensorflow
 tensorflow.keras.models
