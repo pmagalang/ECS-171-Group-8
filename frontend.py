@@ -8,14 +8,13 @@ from PIL import Image
 
 
 # Paths
-sys.path.insert(1, '../Generate Images')
-#sys.path.insert(1, '../frontend')
+sys.path.insert(1, '/preprocessing')
 import wav_splitter
 import generate_spectrograms
 
 # imgs & audio path
-img_path = os.path.dirname(__file__) + '/../Images/'
-audio_path = os.path.dirname(__file__) + '/../Audio/'
+img_path = os.path.dirname(__file__) + '/output/images/'
+audio_path = os.path.dirname(__file__) + '/output/audio/'
 
 st.write("""
 # Music Genre Classification App
@@ -46,9 +45,10 @@ choice = col1.selectbox('Chart',('Mel Spectrogram', 'Chroma', 'Tonnetz'))
 
 # Displays the user input features
 
-audio = AudioSegment.from_wav(uploaded_file)
 
 if uploaded_file is not None:
+    audio = AudioSegment.from_wav(uploaded_file)
+
     if audio.duration_seconds > 30:
         #slice song to 30sec
         wav_splitter.wav_split(uploaded_file)
