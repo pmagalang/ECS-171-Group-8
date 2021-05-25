@@ -12,6 +12,7 @@ sys.path.insert(1, '../Generate Images')
 #sys.path.insert(1, '../frontend')
 import wav_splitter
 import generate_spectrograms
+import song_predict
 
 # imgs & audio path
 img_path = os.path.dirname(__file__) + '/../Images/'
@@ -72,10 +73,19 @@ if uploaded_file is not None:
         generate_spectrograms.gen_melspectrogram(splitted)
         image = Image.open(img_path + 'melspec.png')
 
+    # show spectrogram to user
     st.image(image, use_column_width=True)
+
+    # show audio clip
     st.write("The audio segment we used to analyze")
     st.audio(splitted, format = 'audio/wav')
-    st.write("The genre of this song is ____!")
+
+    # determine song genre
+    genre_probabilities = song_predict.predict_song_genre(img_path + 'melspec.png')
+
+    best_genre = max(genre_probabilities, key = genre_probabilities.get)
+    st.write("The genre of this song is ...")
+    st.write(best_genre)
             
 else:
     st.write('Awaiting Wave file to be uploaded...') 
