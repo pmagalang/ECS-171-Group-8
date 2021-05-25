@@ -5,7 +5,6 @@ altair
 pydub
 pillow
 librosa
-librosa.display
-matplotlib.pyplot
+librosa
+matplotlib
 tensorflow
-tensorflow.keras.models
