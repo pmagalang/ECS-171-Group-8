@@ -6,4 +6,4 @@ pydub
 pillow
 librosa
 matplotlib
-tensorflow==1.14
+tensorflow-cpu
