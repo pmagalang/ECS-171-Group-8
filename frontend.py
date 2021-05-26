@@ -36,15 +36,9 @@ uploaded_file = col1.file_uploader("Upload your wave file", type=["wav"])
 choice = col1.selectbox('Chart',('Mel Spectrogram', 'Chroma', 'Tonnetz'))
 
 if uploaded_file is not None:
-    audio = AudioSegment.from_wav(uploaded_file)
 
-    if audio.duration_seconds > 31:
-        #slice song to 30sec
-        wav_splitter.wav_split(uploaded_file)
-        splitted = audio_path + 'splitted.wav'
-    else:
-        #file is shorter than 30secs
-        splitted = uploaded_file
+    wav_splitter.wav_split(uploaded_file)
+    splitted = audio_path + 'splitted.wav'
 
     if choice == 'Chroma':
         st.subheader('Chroma Chart')
