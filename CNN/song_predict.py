@@ -27,8 +27,7 @@ def predict_song_genre(melspec_path, model_json="model.json",model_weights="mode
     predictions = loaded_model.predict(img_array)
     def get_genre_probabilities(pred_vals):
         info_dict = {}
-        genres = ["blues", "country", "hiphop","metal", "reggae",
-    "classical", "disco", "jazz","pop","rock"]
+        genres = ['blues','classical','country','disco','hiphop','jazz','metal','pop','reggae','rock']
         for i in range(len(genres)):
             percent = pred_vals[i] * 100
             info_dict[genres[i]] = percent
