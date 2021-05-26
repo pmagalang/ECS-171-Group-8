@@ -5,6 +5,5 @@ altair
 pydub
 pillow
 librosa
-libsndfile1-dev
 matplotlib
 tensorflow-cpu
