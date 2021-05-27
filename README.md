@@ -1,6 +1,8 @@
-# Front-end
+# ECS 171 Group 8
 
-## Dependencies
+## Music Genre Classifier
+
+### Dependencies
 
 streamlit - Streamlit turns data scripts into shareable web apps in minutes.
 All in Python. All for free. No front‑end experience required.
