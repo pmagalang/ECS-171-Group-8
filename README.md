@@ -2,11 +2,21 @@
 
 ## Music Genre Classifier
 
+### Running the App Locally
+
+Clone this repository and run `streamlit run frontend.py`
+
+The app should open in your web browser.
+
 ### Dependencies
 
-streamlit - Streamlit turns data scripts into shareable web apps in minutes.
+* streamlit - Streamlit turns data scripts into shareable web apps in minutes.
 All in Python. All for free. No front‑end experience required.
 
-`pip install streamlit`
-
-`streamlit run frontend.py`
+* pandas
+* numpy
+* altair
+* tensorflow
+* matplotlib
+* librosa
+* pydub
