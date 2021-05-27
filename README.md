@@ -7,7 +7,4 @@ All in Python. All for free. No front‑end experience required.
 
 `pip install streamlit`
 
-## Sound-waves
-Run: 
-
 `streamlit run frontend.py`
