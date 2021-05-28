@@ -78,16 +78,27 @@ if uploaded_file is not None:
         st.audio(splitted[i], format = 'audio/wav')
 
 
-#    # determine song genre
-#    genre_probabilities = song_predict.predict_song_genre(img_path + 'melspec.png')
-#
-#    best_genre = max(genre_probabilities, key = genre_probabilities.get)
-#    st.write("The genre of this song is ...", best_genre, "!")
-#
-#    # show probabilities
-#    probs_df = pd.DataFrame(genre_probabilities.items(), columns = ['genre', 'probability'])
-#    c = alt.Chart(probs_df).mark_bar().encode(x = 'genre', y = 'probability')
-#    st.altair_chart(c, use_container_width=True)
+    # determine the song genre
+    all_probs = []
+    genres = ['blues','classical','country','disco','hiphop','jazz','metal','pop','reggae','rock']
+
+    for i in range(3):
+        all_probs.append(song_predict.predict_song_genre(img_path + 'melspec{}.png'.format(i)))
+
+    genre_probabilities = pd.DataFrame(all_probs)
+    avg_probs = genre_probabilities.sum() / 3
+
+    genre_probabilities = pd.DataFrame({
+        'genre': genres,
+        'probability': avg_probs
+    })
+    
+    best_genre = genre_probabilities['probability'].idxmax()
+    st.write("The genre of this song is ...", best_genre, "!")
+
+    # show probabilities
+    c = alt.Chart(genre_probabilities).mark_bar().encode(x = 'genre', y = 'probability')
+    st.altair_chart(c, use_container_width=True)
 
 else:
     st.write('Awaiting Wave file to be uploaded...') 
