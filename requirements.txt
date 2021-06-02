@@ -1,9 +1,0 @@
-streamlit
-pandas
-numpy
-altair
-pydub
-pillow
-librosa
-matplotlib
-tensorflow-cpu
